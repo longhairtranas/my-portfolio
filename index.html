@@ -1,43 +1,64 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 <title>Tran Long Hai | Research Portfolio</title>
 
+<!-- GOOGLE FONT -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
+<!-- ICONS -->
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
 <style>
+
+/* =========================
+   RESET
+========================= */
 
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  scroll-behavior:smooth;
 }
 
-:root{
-  --bg:#0b0f19;
-  --card:#121826;
-  --primary:#7dd3fc;
-  --secondary:#8b5cf6;
-  --text:#e2e8f0;
-  --muted:#94a3b8;
-  --border:#1f2937;
-  --gradient:linear-gradient(135deg,#38bdf8,#8b5cf6);
+html{
+  scroll-behavior:smooth;
 }
 
 body{
   font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.8;
+
+  background:
+  radial-gradient(circle at top left,#1e1b4b,transparent 30%),
+  radial-gradient(circle at bottom right,#0f766e,transparent 30%),
+  #0f172a;
+
+  color:#f8fafc;
+  line-height:1.7;
+
   overflow-x:hidden;
+
+  animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
 }
 
 a{
@@ -45,9 +66,45 @@ a{
   color:inherit;
 }
 
+ul{
+  list-style:none;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+/* =========================
+   VARIABLES
+========================= */
+
+:root{
+
+  --primary:#8b5cf6;
+  --secondary:#06b6d4;
+
+  --text:#f8fafc;
+  --muted:#cbd5e1;
+
+  --card:rgba(255,255,255,0.06);
+
+  --border:rgba(255,255,255,0.1);
+
+  --shadow:
+  0 10px 30px rgba(0,0,0,0.3);
+
+  --transition:all 0.3s ease;
+
+}
+
+/* =========================
+   GLOBAL
+========================= */
+
 .container{
   width:90%;
-  max-width:1200px;
+  max-width:1150px;
   margin:auto;
 }
 
@@ -55,57 +112,118 @@ section{
   padding:110px 0;
 }
 
+.section-title{
+  font-size:2.7rem;
+  margin-bottom:60px;
+
+  background:
+  linear-gradient(
+    90deg,
+    #ffffff,
+    #c4b5fd
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
 .lang{
   display:none;
 }
 
-/* NAVBAR */
+/* =========================
+   HEADER
+========================= */
 
-nav{
+.header{
+
   position:fixed;
-  width:100%;
   top:0;
-  z-index:999;
+  width:100%;
+  z-index:1000;
+
   backdrop-filter:blur(14px);
-  background:rgba(11,15,25,0.85);
-  border-bottom:1px solid rgba(255,255,255,0.05);
+
+  background:rgba(15,23,42,0.75);
+
+  border-bottom:1px solid var(--border);
+
 }
 
-.nav-container{
+.header__container{
+
   width:90%;
-  max-width:1300px;
+  max-width:1250px;
   margin:auto;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
+
   padding:20px 0;
 }
 
 .logo{
-  font-weight:800;
-  font-size:1.1rem;
-  letter-spacing:1px;
+
+  font-size:1.5rem;
+  font-weight:700;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.nav-right{
+.nav{
+
   display:flex;
   align-items:center;
   gap:40px;
 }
 
-.nav-links{
+.nav__menu{
   display:flex;
-  gap:24px;
+  gap:28px;
 }
 
-.nav-links a{
+.nav__link{
+  position:relative;
   color:var(--muted);
-  transition:0.3s;
-  font-size:0.95rem;
+  transition:var(--transition);
 }
 
-.nav-links a:hover{
+.nav__link:hover{
   color:white;
+}
+
+.nav__link::after{
+
+  content:'';
+
+  position:absolute;
+  left:0;
+  bottom:-6px;
+
+  width:0%;
+  height:2px;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  transition:var(--transition);
+}
+
+.nav__link:hover::after{
+  width:100%;
 }
 
 .language-switch{
@@ -114,415 +232,664 @@ nav{
 }
 
 .language-switch button{
-  background:#151c2d;
-  border:1px solid rgba(255,255,255,0.08);
-  color:white;
+
+  border:none;
+
   padding:8px 16px;
-  border-radius:50px;
+
+  border-radius:999px;
+
   cursor:pointer;
-  transition:0.3s;
+
+  color:white;
+
+  background:rgba(255,255,255,0.08);
+
+  transition:var(--transition);
 }
 
 .language-switch button:hover{
-  background:var(--gradient);
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
+
   min-height:100vh;
+
   display:flex;
   align-items:center;
-  justify-content:center;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+}
+
+.hero__container{
+
+  width:90%;
+  max-width:1150px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns:1.2fr 0.8fr;
+  gap:70px;
+  align-items:center;
+}
+
+.hero__title{
+
+  font-size:4.5rem;
+  line-height:1.1;
+  margin-bottom:24px;
 
   background:
-  radial-gradient(circle at top right,#1e3a8a55 0%,transparent 30%),
-  radial-gradient(circle at bottom left,#7c3aed55 0%,transparent 30%);
-}
+  linear-gradient(
+    90deg,
+    white,
+    #c4b5fd
+  );
 
-.hero-content{
-  max-width:900px;
-  padding:0 20px;
-}
-
-.hero h1{
-  font-size:5rem;
-  font-weight:800;
-  margin-bottom:20px;
-  background:var(--gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.hero h2{
-  font-size:1.5rem;
-  color:var(--primary);
-  margin-bottom:30px;
-  font-weight:500;
+.hero__subtitle{
+
+  color:#8be9fd;
+
+  font-size:1.2rem;
+
+  margin-bottom:28px;
 }
 
-.hero p{
-  max-width:800px;
-  margin:auto;
-  color:#dbe4ee;
-  font-size:1.1rem;
+.hero__description{
+
+  color:var(--muted);
+
+  font-size:1.05rem;
+
+  margin-bottom:40px;
+
+  max-width:720px;
 }
 
-.hero-buttons{
-  margin-top:40px;
+.hero__buttons{
   display:flex;
-  justify-content:center;
   gap:20px;
   flex-wrap:wrap;
 }
 
 .btn{
+
+  display:inline-block;
+
   padding:14px 28px;
-  border-radius:50px;
+
+  border-radius:14px;
+
   font-weight:600;
-  transition:0.3s;
+
+  transition:var(--transition);
 }
 
 .btn-primary{
-  background:var(--gradient);
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
   color:white;
 }
 
 .btn-primary:hover{
   transform:translateY(-4px);
-  box-shadow:0 12px 40px rgba(56,189,248,0.25);
+  box-shadow:
+  0 0 25px rgba(139,92,246,0.4);
 }
 
 .btn-secondary{
-  border:1px solid rgba(255,255,255,0.1);
+
+  border:1px solid var(--border);
+
   color:white;
 }
 
 .btn-secondary:hover{
-  background:#1a2235;
+  background:rgba(255,255,255,0.08);
 }
 
-/* TITLES */
+.hero__image{
 
-.section-title{
-  font-size:2.5rem;
-  margin-bottom:60px;
-  position:relative;
-  display:inline-block;
+  border-radius:30px;
+
+  overflow:hidden;
+
+  border:1px solid var(--border);
+
+  box-shadow:var(--shadow);
 }
 
-.section-title::after{
-  content:'';
-  position:absolute;
-  width:60%;
-  height:4px;
-  left:0;
-  bottom:-12px;
-  border-radius:20px;
-  background:var(--gradient);
-}
+/* =========================
+   GLASS CARD
+========================= */
 
-/* ABOUT */
+.glass{
 
-.about-grid{
-  display:grid;
-  grid-template-columns:1.4fr 1fr;
-  gap:50px;
-}
+  background:var(--card);
 
-.about-text p{
-  margin-bottom:25px;
-  color:#d7e0eb;
-}
+  border:1px solid var(--border);
 
-/* GLASS */
+  border-radius:24px;
 
-.glass-card{
-  background:rgba(18,24,38,0.85);
-  border:1px solid rgba(255,255,255,0.06);
-  border-radius:28px;
-  padding:35px;
   backdrop-filter:blur(14px);
-  box-shadow:0 10px 40px rgba(0,0,0,0.25);
+
+  box-shadow:var(--shadow);
 }
 
-.glass-card h3{
-  color:var(--primary);
-  margin-bottom:25px;
+/* =========================
+   ABOUT
+========================= */
+
+.about__grid{
+
+  display:grid;
+  grid-template-columns:1.3fr 0.7fr;
+  gap:40px;
 }
 
-.glass-card ul{
-  padding-left:20px;
+.about__content{
+
+  padding:35px;
 }
 
-.glass-card li{
-  margin-bottom:12px;
+.about__content p{
+  margin-bottom:24px;
+  color:var(--muted);
 }
 
-/* GRID */
+.about__research{
 
-.grid{
+  padding:35px;
+}
+
+.about__research h3{
+
+  margin-bottom:24px;
+
+  color:#8be9fd;
+}
+
+.about__research li{
+  margin-bottom:14px;
+}
+
+/* =========================
+   EDUCATION
+========================= */
+
+.timeline{
+  border-left:2px solid var(--primary);
+  padding-left:30px;
+}
+
+.timeline__item{
+  margin-bottom:40px;
+  position:relative;
+}
+
+.timeline__item::before{
+
+  content:'';
+
+  position:absolute;
+
+  width:16px;
+  height:16px;
+
+  border-radius:50%;
+
+  background:var(--secondary);
+
+  left:-39px;
+  top:6px;
+}
+
+.timeline__title{
+  font-size:1.3rem;
+  margin-bottom:8px;
+}
+
+.timeline__subtitle{
+  color:var(--muted);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills__grid{
+
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
   gap:28px;
 }
 
-.card{
-  background:var(--card);
-  border-radius:24px;
+.skill-card{
+
   padding:35px;
-  border:1px solid var(--border);
-  transition:0.35s;
+
+  transition:var(--transition);
 }
 
-.card:hover{
-  transform:translateY(-8px);
-  border-color:#38bdf855;
+.skill-card:hover{
+
+  transform:translateY(-10px);
+
+  border:1px solid rgba(139,92,246,0.4);
 }
 
-.card h3{
-  color:var(--primary);
-  margin-bottom:20px;
+.skill-card h3{
+
+  margin-bottom:24px;
+
+  color:#8be9fd;
 }
 
-.card ul{
-  padding-left:20px;
+.skill-card li{
+  margin-bottom:12px;
 }
 
-.card li{
-  margin-bottom:10px;
+/* =========================
+   PROJECTS
+========================= */
+
+.projects__grid{
+
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:28px;
 }
 
-/* PROJECTS */
+.project-card{
 
-.project{
-  background:var(--card);
-  border-radius:28px;
-  padding:35px;
-  margin-bottom:30px;
-  border:1px solid var(--border);
-  transition:0.35s;
+  padding:32px;
+
+  transition:var(--transition);
+
+  position:relative;
+  overflow:hidden;
 }
 
-.project:hover{
-  transform:translateY(-5px);
-  border-color:#38bdf855;
+.project-card::before{
+
+  content:'';
+
+  position:absolute;
+  inset:0;
+
+  background:
+  linear-gradient(
+    135deg,
+    rgba(139,92,246,0.12),
+    rgba(6,182,212,0.12)
+  );
+
+  opacity:0;
+
+  transition:var(--transition);
 }
 
-.project h3{
-  color:var(--primary);
-  margin-bottom:15px;
+.project-card:hover::before{
+  opacity:1;
 }
 
-.project p{
-  color:#dbe4ee;
+.project-card:hover{
+
+  transform:
+  translateY(-10px)
+  rotateX(2deg)
+  rotateY(2deg);
+}
+
+.project-card h3{
+  margin-bottom:18px;
+}
+
+.project-card p{
+
+  color:var(--muted);
+
+  margin-bottom:22px;
 }
 
 .tag{
+
   display:inline-block;
-  margin-top:18px;
-  margin-right:10px;
-  padding:6px 14px;
-  border-radius:30px;
-  background:#1f2937;
-  color:#dbe4ee;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
   font-size:0.85rem;
+
+  background:rgba(255,255,255,0.08);
+
+  margin-right:10px;
+  margin-top:10px;
 }
 
-/* PUBLICATIONS */
+/* =========================
+   PUBLICATIONS
+========================= */
 
 .publication{
-  background:var(--card);
-  border:1px solid var(--border);
+
   padding:28px;
-  border-radius:22px;
+
   margin-bottom:22px;
-  transition:0.3s;
 }
 
-.publication:hover{
-  transform:translateY(-4px);
-  border-color:#38bdf855;
+.publication h3{
+  margin-bottom:12px;
+}
+
+.publication p{
+  color:var(--muted);
+  margin-bottom:18px;
 }
 
 .publication a{
-  color:var(--primary);
-  font-weight:600;
+  color:#8be9fd;
 }
 
-/* STATS */
+/* =========================
+   STATS
+========================= */
 
 .stats{
+
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
   gap:24px;
-  margin-top:70px;
+
+  margin-top:60px;
 }
 
-.stat-box{
-  background:var(--card);
-  border-radius:24px;
-  text-align:center;
+.stat{
+
   padding:35px;
-  border:1px solid var(--border);
+  text-align:center;
 }
 
-.stat-box h3{
-  font-size:2.8rem;
-  color:var(--primary);
-  margin-bottom:10px;
+.stat h3{
+
+  font-size:3rem;
+
+  color:#8be9fd;
 }
 
-/* CONTACT */
+.stat p{
+  color:var(--muted);
+}
 
-.contact-wrapper{
+/* =========================
+   CONTACT
+========================= */
+
+.contact__wrapper{
+
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:40px;
 }
 
-.contact-item{
-  margin-bottom:20px;
+.contact__info,
+.contact__form{
+  padding:35px;
 }
 
-.contact-item a{
-  color:var(--primary);
+.contact__info h3{
+  margin-bottom:24px;
 }
 
-.contact-form{
-  display:flex;
-  flex-direction:column;
-  gap:22px;
-}
-
-.input-group{
-  display:flex;
-  flex-direction:column;
-}
-
-.input-group label{
-  margin-bottom:10px;
-}
-
-.input-group input,
-.input-group textarea{
-  background:#0f172a;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:14px;
-  padding:16px;
-  color:white;
-  outline:none;
-  transition:0.3s;
-}
-
-.input-group input:focus,
-.input-group textarea:focus{
-  border-color:#38bdf8;
-  box-shadow:0 0 0 3px rgba(56,189,248,0.15);
-}
-
-.contact-btn{
-  background:var(--gradient);
-  border:none;
-  padding:16px;
-  border-radius:14px;
-  color:white;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.contact-btn:hover{
-  transform:translateY(-3px);
-}
-
-/* FOOTER */
-
-footer{
-  border-top:1px solid rgba(255,255,255,0.06);
-  padding:50px 20px;
-  text-align:center;
+.contact__info p{
+  margin-bottom:30px;
   color:var(--muted);
 }
 
-/* RESPONSIVE */
+.contact__item{
+  margin-bottom:18px;
+}
+
+.contact__item a{
+  color:#8be9fd;
+}
+
+.form-group{
+  margin-bottom:22px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:10px;
+}
+
+.form-group input,
+.form-group textarea{
+
+  width:100%;
+
+  padding:16px;
+
+  border-radius:16px;
+
+  border:1px solid var(--border);
+
+  background:rgba(255,255,255,0.05);
+
+  color:white;
+
+  font-family:inherit;
+
+  outline:none;
+
+  transition:var(--transition);
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+
+  border-color:var(--primary);
+
+  box-shadow:
+  0 0 20px rgba(139,92,246,0.3);
+}
+
+.submit-btn{
+
+  border:none;
+
+  padding:14px 30px;
+
+  border-radius:14px;
+
+  cursor:pointer;
+
+  color:white;
+
+  font-weight:600;
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+
+  transition:var(--transition);
+}
+
+.submit-btn:hover{
+
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 0 25px rgba(6,182,212,0.4);
+}
+
+/* =========================
+   SOCIAL FLOAT
+========================= */
+
+.social-float{
+
+  position:fixed;
+
+  right:25px;
+  bottom:25px;
+
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+
+  z-index:999;
+}
+
+.social-float a{
+
+  width:52px;
+  height:52px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  border-radius:50%;
+
+  background:rgba(255,255,255,0.08);
+
+  backdrop-filter:blur(10px);
+
+  transition:var(--transition);
+
+  border:1px solid var(--border);
+}
+
+.social-float a:hover{
+
+  transform:translateY(-5px);
+
+  background:
+  linear-gradient(
+    90deg,
+    var(--primary),
+    var(--secondary)
+  );
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+  border-top:1px solid var(--border);
+
+  padding:35px 0;
+
+  text-align:center;
+}
+
+.footer p{
+  color:var(--muted);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media(max-width:950px){
 
-  .hero h1{
-    font-size:3rem;
-  }
-
-  .hero h2{
-    font-size:1.1rem;
-  }
-
-  .about-grid,
-  .contact-wrapper{
+  .hero__container,
+  .about__grid,
+  .contact__wrapper{
     grid-template-columns:1fr;
   }
 
-  .nav-links{
+  .projects__grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero__title{
+    font-size:3rem;
+  }
+
+  .nav__menu{
     display:none;
   }
 
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<!-- HEADER -->
 
-<nav>
+<header class="header">
 
-<div class="nav-container">
+<div class="header__container">
 
-<div class="logo">TRAN LONG HAI</div>
+<a href="#" class="logo">
+TRAN LONG HAI
+</a>
 
-<div class="nav-right">
+<div class="nav">
 
-<div class="nav-links">
+<nav class="nav__menu">
 
-<a href="#about">
+<a href="#about" class="nav__link">
 <span class="lang vi">Giới thiệu</span>
 <span class="lang en">About</span>
 </a>
 
-<a href="#education">
+<a href="#education" class="nav__link">
 <span class="lang vi">Học vấn</span>
 <span class="lang en">Education</span>
 </a>
 
-<a href="#skills">
+<a href="#skills" class="nav__link">
 <span class="lang vi">Kỹ năng</span>
 <span class="lang en">Skills</span>
 </a>
 
-<a href="#projects">
+<a href="#projects" class="nav__link">
 <span class="lang vi">Dự án</span>
 <span class="lang en">Projects</span>
 </a>
 
-<a href="#publications">
+<a href="#publications" class="nav__link">
 <span class="lang vi">Công bố</span>
 <span class="lang en">Publications</span>
 </a>
 
-<a href="#awards">
-<span class="lang vi">Giải thưởng</span>
-<span class="lang en">Awards</span>
-</a>
-
-<a href="#contact">
+<a href="#contact" class="nav__link">
 <span class="lang vi">Liên hệ</span>
 <span class="lang en">Contact</span>
 </a>
 
-</div>
+</nav>
 
 <div class="language-switch">
 <button onclick="setLanguage('vi')">VI</button>
@@ -533,20 +900,30 @@ footer{
 
 </div>
 
-</nav>
+</header>
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-content">
+<div class="hero__container">
 
-<h1>
-<span class="lang vi">Trần Long Hải</span>
-<span class="lang en">Tran Long Hai</span>
+<div>
+
+<h1 class="hero__title">
+
+<span class="lang vi">
+Trần Long Hải
+</span>
+
+<span class="lang en">
+Tran Long Hai
+</span>
+
 </h1>
 
-<h2>
+<h2 class="hero__subtitle">
+
 <span class="lang vi">
 Nhà nghiên cứu Khoa học Động vật · Công nghệ & Phân tích dữ liệu
 </span>
@@ -554,9 +931,10 @@ Nhà nghiên cứu Khoa học Động vật · Công nghệ & Phân tích dữ l
 <span class="lang en">
 Animal Science Researcher · Technology & Data Analysis
 </span>
+
 </h2>
 
-<p>
+<p class="hero__description">
 
 <span class="lang vi">
 Tôi quan tâm đến việc kết hợp khoa học, công nghệ và tư duy liên ngành
@@ -572,6 +950,32 @@ environmental conservation.
 
 </p>
 
+<div class="hero__buttons">
+
+<a href="#projects" class="btn btn-primary">
+
+<span class="lang vi">Xem dự án</span>
+<span class="lang en">View Projects</span>
+
+</a>
+
+<a href="#publications" class="btn btn-secondary">
+
+<span class="lang vi">Công bố khoa học</span>
+<span class="lang en">Publications</span>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="hero__image">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
 </div>
 
 </section>
@@ -583,13 +987,15 @@ environmental conservation.
 <div class="container">
 
 <h2 class="section-title">
+
 <span class="lang vi">Giới thiệu</span>
 <span class="lang en">About Me</span>
+
 </h2>
 
-<div class="about-grid">
+<div class="about__grid">
 
-<div class="about-text glass-card">
+<div class="about__content glass">
 
 <p>
 <span class="lang vi">
@@ -603,21 +1009,33 @@ I began my journey in Animal Science with a strong passion for biological resear
 
 <p>
 <span class="lang vi">
-Điều đó thôi thúc tôi tiếp cận lập trình, phân tích dữ liệu và phát triển phần mềm nhằm mở rộng khả năng nghiên cứu.
+Càng đi sâu vào nghiên cứu, tôi càng nhận ra rằng dữ liệu và công nghệ đang trở thành chìa khóa để giải quyết các vấn đề khoa học hiện đại.
 </span>
 
 <span class="lang en">
-This motivated me to explore programming, data analysis, and software development to expand research capabilities.
+As I progressed in research, I realized that data and technology are becoming essential tools for solving modern scientific challenges.
+</span>
+</p>
+
+<p>
+<span class="lang vi">
+Điều đó thôi thúc tôi học lập trình, phân tích dữ liệu và phát triển phần mềm nhằm mở rộng khả năng nghiên cứu và xây dựng các giải pháp khoa học hiệu quả hơn.
+</span>
+
+<span class="lang en">
+This motivated me to explore programming, data analysis, and software development to expand research capabilities and build more effective scientific solutions.
 </span>
 </p>
 
 </div>
 
-<div class="glass-card">
+<div class="about__research glass">
 
 <h3>
+
 <span class="lang vi">Lĩnh vực nghiên cứu</span>
 <span class="lang en">Research Interests</span>
+
 </h3>
 
 <ul>
@@ -638,11 +1056,271 @@ This motivated me to explore programming, data analysis, and software developmen
 </li>
 
 <li>
+<span class="lang vi">Chăn nuôi tuần hoàn</span>
+<span class="lang en">Circular Livestock Systems</span>
+</li>
+
+<li>
 <span class="lang vi">Phân tích dữ liệu sinh học</span>
 <span class="lang en">Biological Data Analysis</span>
 </li>
 
 </ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+
+<div class="container">
+
+<h2 class="section-title">
+
+<span class="lang vi">Học vấn</span>
+<span class="lang en">Education</span>
+
+</h2>
+
+<div class="timeline">
+
+<div class="timeline__item">
+
+<h3 class="timeline__title">
+Master of Animal Science
+</h3>
+
+<p class="timeline__subtitle">
+Excellent Degree
+</p>
+
+</div>
+
+<div class="timeline__item">
+
+<h3 class="timeline__title">
+Doctor of Veterinary Medicine
+</h3>
+
+<p class="timeline__subtitle">
+Excellent Degree
+</p>
+
+</div>
+
+<div class="timeline__item">
+
+<h3 class="timeline__title">
+Bachelor of Information Technology
+</h3>
+
+<p class="timeline__subtitle">
+In Progress
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="container">
+
+<h2 class="section-title">
+
+<span class="lang vi">Kỹ năng</span>
+<span class="lang en">Technical Skills</span>
+
+</h2>
+
+<div class="skills__grid">
+
+<div class="skill-card glass">
+
+<h3>Data Analysis</h3>
+
+<ul>
+<li>RStudio</li>
+<li>SPSS</li>
+<li>JASP</li>
+<li>SAS</li>
+<li>Minitab</li>
+</ul>
+
+</div>
+
+<div class="skill-card glass">
+
+<h3>Programming</h3>
+
+<ul>
+<li>Python</li>
+<li>Web Development</li>
+<li>Scientific Visualization</li>
+<li>Data Analysis with R</li>
+</ul>
+
+</div>
+
+<div class="skill-card glass">
+
+<h3>Research</h3>
+
+<ul>
+<li>Experimental Design</li>
+<li>Scientific Writing</li>
+<li>ISO 17025</li>
+<li>Laboratory Management</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+<h2 class="section-title">
+
+<span class="lang vi">Dự án nghiên cứu</span>
+<span class="lang en">Research Projects</span>
+
+</h2>
+
+<div class="projects__grid">
+
+<div class="project-card glass">
+
+<h3>
+Impact of Salinity Intrusion in Ben Tre
+</h3>
+
+<p>
+Environmental research project evaluating the impacts of salinity intrusion on local communities.
+</p>
+
+<span class="tag">Environment</span>
+<span class="tag">Project Leader</span>
+
+</div>
+
+<div class="project-card glass">
+
+<h3>
+Soybean Waste Utilization in Livestock Feed
+</h3>
+
+<p>
+Circular agriculture research converting soybean waste into sustainable livestock feed resources.
+</p>
+
+<span class="tag">Animal Science</span>
+<span class="tag">Circular Agriculture</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PUBLICATIONS -->
+
+<section id="publications">
+
+<div class="container">
+
+<h2 class="section-title">
+
+<span class="lang vi">Công bố khoa học</span>
+<span class="lang en">Publications</span>
+
+</h2>
+
+<div class="publication glass">
+
+<h3>
+Publication Title Example
+</h3>
+
+<p>
+Journal Name · 2025
+</p>
+
+<a href="#">
+View Publication
+</a>
+
+</div>
+
+<div class="publication glass">
+
+<h3>
+Publication Title Example
+</h3>
+
+<p>
+Journal Name · 2024
+</p>
+
+<a href="#">
+View Publication
+</a>
+
+</div>
+
+<div class="stats">
+
+<div class="stat glass">
+
+<h3>20+</h3>
+
+<p>
+<span class="lang vi">Công bố khoa học</span>
+<span class="lang en">Publications</span>
+</p>
+
+</div>
+
+<div class="stat glass">
+
+<h3>10+</h3>
+
+<p>
+<span class="lang vi">Dự án nghiên cứu</span>
+<span class="lang en">Research Projects</span>
+</p>
+
+</div>
+
+<div class="stat glass">
+
+<h3>5+</h3>
+
+<p>
+<span class="lang vi">Giải thưởng</span>
+<span class="lang en">Awards</span>
+</p>
 
 </div>
 
@@ -665,52 +1343,75 @@ This motivated me to explore programming, data analysis, and software developmen
 
 </h2>
 
-<div class="contact-wrapper">
+<div class="contact__wrapper">
 
-<div class="contact-info glass-card">
+<div class="contact__info glass">
 
 <h3>
+
 <span class="lang vi">Thông tin liên hệ</span>
 <span class="lang en">Contact Information</span>
+
 </h3>
 
-<div class="contact-item">
+<p>
+
+<span class="lang vi">
+Tôi luôn sẵn sàng cho các cơ hội nghiên cứu và hợp tác học thuật.
+</span>
+
+<span class="lang en">
+I am always open to research collaborations and academic opportunities.
+</span>
+
+</p>
+
+<div class="contact__item">
 📧 Email:
 <a href="mailto:yourmail@gmail.com">
 yourmail@gmail.com
 </a>
 </div>
 
-<div class="contact-item">
+<div class="contact__item">
 💻 GitHub:
-<a href="https://github.com/yourgithub" target="_blank">
+<a href="#">
 github.com/yourgithub
 </a>
 </div>
 
-<div class="contact-item">
+<div class="contact__item">
 🔗 LinkedIn:
 <a href="#">
 linkedin.com/in/yourprofile
 </a>
 </div>
 
+<div class="contact__item">
+📚 Google Scholar:
+<a href="#">
+Research Profile
+</a>
 </div>
 
-<form class="contact-form glass-card">
+</div>
 
-<div class="input-group">
+<form class="contact__form glass">
+
+<div class="form-group">
 
 <label>
+
 <span class="lang vi">Họ và tên</span>
 <span class="lang en">Full Name</span>
+
 </label>
 
 <input type="text">
 
 </div>
 
-<div class="input-group">
+<div class="form-group">
 
 <label>Email</label>
 
@@ -718,18 +1419,20 @@ linkedin.com/in/yourprofile
 
 </div>
 
-<div class="input-group">
+<div class="form-group">
 
 <label>
+
 <span class="lang vi">Nội dung</span>
 <span class="lang en">Message</span>
+
 </label>
 
 <textarea rows="6"></textarea>
 
 </div>
 
-<button type="submit" class="contact-btn">
+<button class="submit-btn">
 
 <span class="lang vi">Gửi tin nhắn</span>
 <span class="lang en">Send Message</span>
@@ -744,9 +1447,29 @@ linkedin.com/in/yourprofile
 
 </section>
 
+<!-- SOCIAL -->
+
+<div class="social-float">
+
+<a href="#">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="#">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="#">
+<i class="fas fa-envelope"></i>
+</a>
+
+</div>
+
 <!-- FOOTER -->
 
-<footer>
+<footer class="footer">
+
+<div class="container">
 
 <p>
 
@@ -759,6 +1482,8 @@ linkedin.com/in/yourprofile
 </span>
 
 </p>
+
+</div>
 
 </footer>
 
@@ -788,7 +1513,8 @@ function setLanguage(lang){
 
 window.addEventListener('DOMContentLoaded',()=>{
 
-  const savedLang = localStorage.getItem('language') || 'en';
+  const savedLang =
+  localStorage.getItem('language') || 'en';
 
   setLanguage(savedLang);
 
@@ -798,4 +1524,3 @@ window.addEventListener('DOMContentLoaded',()=>{
 
 </body>
 </html>
-```
