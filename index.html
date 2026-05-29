@@ -1,977 +1,801 @@
----
-
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tran Long Hai | Research Portfolio</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      scroll-behavior:smooth;
-    }
-
-    :root{
-      --bg:#0b0f19;
-      --card:#121826;
-      --primary:#7dd3fc;
-      --secondary:#8b5cf6;
-      --text:#e2e8f0;
-      --muted:#94a3b8;
-      --border:#1f2937;
-      --gradient:linear-gradient(135deg,#38bdf8,#8b5cf6);
-    }
-
-    body{
-      font-family:'Inter',sans-serif;
-      background:var(--bg);
-      color:var(--text);
-      line-height:1.8;
-      overflow-x:hidden;
-    }
-
-    a{
-      text-decoration:none;
-      color:inherit;
-    }
-
-    .container{
-      width:90%;
-      max-width:1200px;
-      margin:auto;
-    }
-
-    section{
-      padding:110px 0;
-    }
-
-    .lang{
-      display:none;
-    }
-
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      z-index:999;
-      backdrop-filter:blur(14px);
-      background:rgba(11,15,25,0.8);
-      border-bottom:1px solid rgba(255,255,255,0.05);
-    }
-
-    .nav-container{
-      width:90%;
-      max-width:1300px;
-      margin:auto;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 0;
-    }
-
-    .logo{
-      font-weight:800;
-      letter-spacing:1px;
-      font-size:1.1rem;
-    }
-
-    .nav-right{
-      display:flex;
-      align-items:center;
-      gap:40px;
-    }
-
-    .nav-links{
-      display:flex;
-      gap:24px;
-    }
-
-    .nav-links a{
-      color:var(--muted);
-      transition:0.3s;
-      font-size:0.95rem;
-    }
-
-    .nav-links a:hover{
-      color:white;
-    }
-
-    .language-switch{
-      display:flex;
-      gap:10px;
-    }
-
-    .language-switch button{
-      background:#151c2d;
-      border:1px solid rgba(255,255,255,0.08);
-      color:white;
-      padding:8px 16px;
-      border-radius:50px;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .language-switch button:hover{
-      background:var(--gradient);
-    }
-
-    /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      background:
-      radial-gradient(circle at top right,#1e3a8a55 0%,transparent 30%),
-      radial-gradient(circle at bottom left,#7c3aed55 0%,transparent 30%);
-    }
-
-    .hero-content{
-      max-width:900px;
-      padding:0 20px;
-      z-index:2;
-    }
-
-    .hero h1{
-      font-size:5rem;
-      font-weight:800;
-      margin-bottom:20px;
-      background:var(--gradient);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .hero h2{
-      font-size:1.5rem;
-      color:var(--primary);
-      margin-bottom:30px;
-      font-weight:500;
-    }
-
-    .hero p{
-      color:var(--text);
-      font-size:1.1rem;
-      max-width:800px;
-      margin:auto;
-    }
-
-    .hero-buttons{
-      margin-top:40px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      padding:14px 28px;
-      border-radius:50px;
-      font-weight:600;
-      transition:0.3s;
-    }
-
-    .btn-primary{
-      background:var(--gradient);
-      color:white;
-    }
-
-    .btn-primary:hover{
-      transform:translateY(-4px);
-      box-shadow:0 12px 40px rgba(56,189,248,0.25);
-    }
-
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.1);
-      color:white;
-    }
-
-    .btn-secondary:hover{
-      background:#1a2235;
-    }
-
-    /* TITLES */
-
-    .section-title{
-      font-size:2.5rem;
-      margin-bottom:60px;
-      position:relative;
-      display:inline-block;
-    }
-
-    .section-title::after{
-      content:'';
-      position:absolute;
-      width:60%;
-      height:4px;
-      left:0;
-      bottom:-12px;
-      border-radius:20px;
-      background:var(--gradient);
-    }
-
-    /* ABOUT */
-
-    .about-grid{
-      display:grid;
-      grid-template-columns:1.4fr 1fr;
-      gap:50px;
-    }
-
-    .about-text p{
-      margin-bottom:25px;
-      color:#d7e0eb;
-    }
-
-    .glass-card{
-      background:rgba(18,24,38,0.85);
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:28px;
-      padding:35px;
-      backdrop-filter:blur(14px);
-      box-shadow:0 10px 40px rgba(0,0,0,0.25);
-    }
-
-    .glass-card h3{
-      color:var(--primary);
-      margin-bottom:25px;
-    }
-
-    .glass-card ul{
-      padding-left:20px;
-    }
-
-    .glass-card li{
-      margin-bottom:12px;
-      color:#d7e0eb;
-    }
-
-    /* GRID */
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-      gap:28px;
-    }
-
-    .card{
-      background:var(--card);
-      border-radius:24px;
-      padding:35px;
-      border:1px solid var(--border);
-      transition:0.35s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-      border-color:#38bdf855;
-    }
-
-    .card h3{
-      color:var(--primary);
-      margin-bottom:20px;
-    }
-
-    .card ul{
-      padding-left:20px;
-    }
-
-    .card li{
-      margin-bottom:10px;
-      color:#dbe4ee;
-    }
-
-    /* PROJECTS */
-
-    .project{
-      background:var(--card);
-      border-radius:28px;
-      padding:35px;
-      margin-bottom:30px;
-      border:1px solid var(--border);
-      transition:0.35s;
-    }
-
-    .project:hover{
-      transform:translateY(-5px);
-      border-color:#38bdf855;
-    }
-
-    .project h3{
-      color:var(--primary);
-      margin-bottom:15px;
-    }
-
-    .project p{
-      color:#dbe4ee;
-    }
-
-    .tag{
-      display:inline-block;
-      margin-top:18px;
-      margin-right:10px;
-      padding:6px 14px;
-      border-radius:30px;
-      background:#1f2937;
-      color:#dbe4ee;
-      font-size:0.85rem;
-    }
-
-    /* PUBLICATIONS */
-
-    .publication{
-      background:var(--card);
-      border:1px solid var(--border);
-      padding:28px;
-      border-radius:22px;
-      margin-bottom:22px;
-      transition:0.3s;
-    }
-
-    .publication:hover{
-      transform:translateY(-4px);
-      border-color:#38bdf855;
-    }
-
-    .publication a{
-      color:var(--primary);
-      font-weight:600;
-    }
-
-    .publication a:hover{
-      text-decoration:underline;
-    }
-
-    /* STATS */
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-      gap:24px;
-      margin-top:70px;
-    }
-
-    .stat-box{
-      background:var(--card);
-      border-radius:24px;
-      text-align:center;
-      padding:35px;
-      border:1px solid var(--border);
-    }
-
-    .stat-box h3{
-      font-size:2.8rem;
-      color:var(--primary);
-      margin-bottom:10px;
-    }
-
-    .stat-box p{
-      color:var(--muted);
-    }
-
-    /* FOOTER */
-
-    footer{
-      border-top:1px solid rgba(255,255,255,0.06);
-      padding:50px 20px;
-      text-align:center;
-      color:var(--muted);
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:950px){
-
-      .about-grid{
-        grid-template-columns:1fr;
-      }
-
-      .hero h1{
-        font-size:3rem;
-      }
-
-      .hero h2{
-        font-size:1.1rem;
-      }
-
-      .nav-links{
-        display:none;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tran Long Hai | Research Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
+
+:root{
+  --bg:#0b0f19;
+  --card:#121826;
+  --primary:#7dd3fc;
+  --secondary:#8b5cf6;
+  --text:#e2e8f0;
+  --muted:#94a3b8;
+  --border:#1f2937;
+  --gradient:linear-gradient(135deg,#38bdf8,#8b5cf6);
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:90%;
+  max-width:1200px;
+  margin:auto;
+}
+
+section{
+  padding:110px 0;
+}
+
+.lang{
+  display:none;
+}
+
+/* NAVBAR */
+
+nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:999;
+  backdrop-filter:blur(14px);
+  background:rgba(11,15,25,0.85);
+  border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.nav-container{
+  width:90%;
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+}
+
+.logo{
+  font-weight:800;
+  font-size:1.1rem;
+  letter-spacing:1px;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:40px;
+}
+
+.nav-links{
+  display:flex;
+  gap:24px;
+}
+
+.nav-links a{
+  color:var(--muted);
+  transition:0.3s;
+  font-size:0.95rem;
+}
+
+.nav-links a:hover{
+  color:white;
+}
+
+.language-switch{
+  display:flex;
+  gap:10px;
+}
+
+.language-switch button{
+  background:#151c2d;
+  border:1px solid rgba(255,255,255,0.08);
+  color:white;
+  padding:8px 16px;
+  border-radius:50px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.language-switch button:hover{
+  background:var(--gradient);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+
+  background:
+  radial-gradient(circle at top right,#1e3a8a55 0%,transparent 30%),
+  radial-gradient(circle at bottom left,#7c3aed55 0%,transparent 30%);
+}
+
+.hero-content{
+  max-width:900px;
+  padding:0 20px;
+}
+
+.hero h1{
+  font-size:5rem;
+  font-weight:800;
+  margin-bottom:20px;
+  background:var(--gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.hero h2{
+  font-size:1.5rem;
+  color:var(--primary);
+  margin-bottom:30px;
+  font-weight:500;
+}
+
+.hero p{
+  max-width:800px;
+  margin:auto;
+  color:#dbe4ee;
+  font-size:1.1rem;
+}
+
+.hero-buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 28px;
+  border-radius:50px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:var(--gradient);
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 40px rgba(56,189,248,0.25);
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,0.1);
+  color:white;
+}
+
+.btn-secondary:hover{
+  background:#1a2235;
+}
+
+/* TITLES */
+
+.section-title{
+  font-size:2.5rem;
+  margin-bottom:60px;
+  position:relative;
+  display:inline-block;
+}
+
+.section-title::after{
+  content:'';
+  position:absolute;
+  width:60%;
+  height:4px;
+  left:0;
+  bottom:-12px;
+  border-radius:20px;
+  background:var(--gradient);
+}
+
+/* ABOUT */
+
+.about-grid{
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:50px;
+}
+
+.about-text p{
+  margin-bottom:25px;
+  color:#d7e0eb;
+}
+
+/* GLASS */
+
+.glass-card{
+  background:rgba(18,24,38,0.85);
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:28px;
+  padding:35px;
+  backdrop-filter:blur(14px);
+  box-shadow:0 10px 40px rgba(0,0,0,0.25);
+}
+
+.glass-card h3{
+  color:var(--primary);
+  margin-bottom:25px;
+}
+
+.glass-card ul{
+  padding-left:20px;
+}
+
+.glass-card li{
+  margin-bottom:12px;
+}
+
+/* GRID */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:24px;
+  padding:35px;
+  border:1px solid var(--border);
+  transition:0.35s;
+}
+
+.card:hover{
+  transform:translateY(-8px);
+  border-color:#38bdf855;
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:20px;
+}
+
+.card ul{
+  padding-left:20px;
+}
+
+.card li{
+  margin-bottom:10px;
+}
+
+/* PROJECTS */
+
+.project{
+  background:var(--card);
+  border-radius:28px;
+  padding:35px;
+  margin-bottom:30px;
+  border:1px solid var(--border);
+  transition:0.35s;
+}
+
+.project:hover{
+  transform:translateY(-5px);
+  border-color:#38bdf855;
+}
+
+.project h3{
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.project p{
+  color:#dbe4ee;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:18px;
+  margin-right:10px;
+  padding:6px 14px;
+  border-radius:30px;
+  background:#1f2937;
+  color:#dbe4ee;
+  font-size:0.85rem;
+}
+
+/* PUBLICATIONS */
+
+.publication{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:28px;
+  border-radius:22px;
+  margin-bottom:22px;
+  transition:0.3s;
+}
+
+.publication:hover{
+  transform:translateY(-4px);
+  border-color:#38bdf855;
+}
+
+.publication a{
+  color:var(--primary);
+  font-weight:600;
+}
+
+/* STATS */
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:24px;
+  margin-top:70px;
+}
+
+.stat-box{
+  background:var(--card);
+  border-radius:24px;
+  text-align:center;
+  padding:35px;
+  border:1px solid var(--border);
+}
+
+.stat-box h3{
+  font-size:2.8rem;
+  color:var(--primary);
+  margin-bottom:10px;
+}
+
+/* CONTACT */
+
+.contact-wrapper{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+}
+
+.contact-item{
+  margin-bottom:20px;
+}
+
+.contact-item a{
+  color:var(--primary);
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.input-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.input-group label{
+  margin-bottom:10px;
+}
+
+.input-group input,
+.input-group textarea{
+  background:#0f172a;
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px;
+  padding:16px;
+  color:white;
+  outline:none;
+  transition:0.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+  border-color:#38bdf8;
+  box-shadow:0 0 0 3px rgba(56,189,248,0.15);
+}
+
+.contact-btn{
+  background:var(--gradient);
+  border:none;
+  padding:16px;
+  border-radius:14px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.contact-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid rgba(255,255,255,0.06);
+  padding:50px 20px;
+  text-align:center;
+  color:var(--muted);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:950px){
+
+  .hero h1{
+    font-size:3rem;
+  }
+
+  .hero h2{
+    font-size:1.1rem;
+  }
+
+  .about-grid,
+  .contact-wrapper{
+    grid-template-columns:1fr;
+  }
+
+  .nav-links{
+    display:none;
+  }
+
+}
+
+</style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
 
-  <nav>
+<nav>
 
-    <div class="nav-container">
+<div class="nav-container">
 
-      <div class="logo">TRAN LONG HAI</div>
+<div class="logo">TRAN LONG HAI</div>
 
-      <div class="nav-right">
+<div class="nav-right">
 
-        <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#education">Education</a>
-          <a href="#research">Research</a>
-          <a href="#skills">Skills</a>
-          <a href="#projects">Projects</a>
-          <a href="#publications">Publications</a>
-          <a href="#awards">Awards</a>
-        </div>
+<div class="nav-links">
 
-        <div class="language-switch">
-          <button onclick="setLanguage('vi')">VI</button>
-          <button onclick="setLanguage('en')">EN</button>
-        </div>
+<a href="#about">
+<span class="lang vi">Giới thiệu</span>
+<span class="lang en">About</span>
+</a>
 
-      </div>
+<a href="#education">
+<span class="lang vi">Học vấn</span>
+<span class="lang en">Education</span>
+</a>
 
-    </div>
+<a href="#skills">
+<span class="lang vi">Kỹ năng</span>
+<span class="lang en">Skills</span>
+</a>
 
-  </nav>
+<a href="#projects">
+<span class="lang vi">Dự án</span>
+<span class="lang en">Projects</span>
+</a>
 
-  <!-- HERO -->
+<a href="#publications">
+<span class="lang vi">Công bố</span>
+<span class="lang en">Publications</span>
+</a>
 
-  <section class="hero">
+<a href="#awards">
+<span class="lang vi">Giải thưởng</span>
+<span class="lang en">Awards</span>
+</a>
 
-    <div class="hero-content">
+<a href="#contact">
+<span class="lang vi">Liên hệ</span>
+<span class="lang en">Contact</span>
+</a>
 
-      <h1>
-        <span class="lang vi">Trần Long Hải</span>
-        <span class="lang en">Tran Long Hai</span>
-      </h1>
+</div>
 
-      <h2>
-        <span class="lang vi">
-          Nhà nghiên cứu Khoa học Động vật · Công nghệ & Phân tích dữ liệu
-        </span>
+<div class="language-switch">
+<button onclick="setLanguage('vi')">VI</button>
+<button onclick="setLanguage('en')">EN</button>
+</div>
 
-        <span class="lang en">
-          Animal Science Researcher · Technology & Data Analysis
-        </span>
-      </h2>
+</div>
 
-      <p>
+</div>
 
-        <span class="lang vi">
-          Tôi quan tâm đến việc kết hợp khoa học, công nghệ và tư duy liên ngành
-          để xây dựng những giải pháp có giá trị thực tiễn cho nghiên cứu sinh học
-          và bảo tồn môi trường.
-        </span>
-
-        <span class="lang en">
-          I am interested in integrating science, technology, and interdisciplinary
-          thinking to develop practical solutions for biological research and
-          environmental conservation.
-        </span>
+</nav>
 
-      </p>
+<!-- HERO -->
 
-      <div class="hero-buttons">
-        <a href="#projects" class="btn btn-primary">
-          <span class="lang vi">Dự án</span>
-          <span class="lang en">Projects</span>
-        </a>
+<section class="hero">
 
-        <a href="#publications" class="btn btn-secondary">
-          <span class="lang vi">Công bố khoa học</span>
-          <span class="lang en">Publications</span>
-        </a>
-      </div>
+<div class="hero-content">
 
-    </div>
+<h1>
+<span class="lang vi">Trần Long Hải</span>
+<span class="lang en">Tran Long Hai</span>
+</h1>
 
-  </section>
+<h2>
+<span class="lang vi">
+Nhà nghiên cứu Khoa học Động vật · Công nghệ & Phân tích dữ liệu
+</span>
 
-  <!-- ABOUT -->
+<span class="lang en">
+Animal Science Researcher · Technology & Data Analysis
+</span>
+</h2>
 
-  <section id="about">
+<p>
 
-    <div class="container">
+<span class="lang vi">
+Tôi quan tâm đến việc kết hợp khoa học, công nghệ và tư duy liên ngành
+để xây dựng những giải pháp có giá trị thực tiễn cho nghiên cứu sinh học
+và bảo tồn môi trường.
+</span>
 
-      <h2 class="section-title">
-        <span class="lang vi">Giới thiệu</span>
-        <span class="lang en">About Me</span>
-      </h2>
+<span class="lang en">
+I am interested in integrating science, technology, and interdisciplinary
+thinking to develop practical solutions for biological research and
+environmental conservation.
+</span>
 
-      <div class="about-grid">
+</p>
 
-        <div class="about-text glass-card">
+</div>
 
-          <p>
-            <span class="lang vi">
-              Tôi bắt đầu hành trình của mình trong lĩnh vực Khoa học Động vật với niềm đam mê dành cho nghiên cứu sinh học và bảo tồn môi trường.
-            </span>
-
-            <span class="lang en">
-              I began my journey in Animal Science with a strong passion for biological research and environmental conservation.
-            </span>
-          </p>
+</section>
 
-          <p>
-            <span class="lang vi">
-              Càng đi sâu vào nghiên cứu, tôi càng nhận ra rằng những vấn đề khoa học hiện đại không còn nằm trong ranh giới của một chuyên ngành duy nhất.
-            </span>
-
-            <span class="lang en">
-              As I progressed in research, I realized that modern scientific challenges extend beyond the boundaries of a single discipline.
-            </span>
-          </p>
+<!-- ABOUT -->
 
-          <p>
-            <span class="lang vi">
-              Điều đó thôi thúc tôi tiếp cận lập trình, phân tích dữ liệu và phát triển phần mềm nhằm mở rộng khả năng nghiên cứu và xây dựng các giải pháp khoa học hiệu quả hơn.
-            </span>
-
-            <span class="lang en">
-              This motivated me to explore programming, data analysis, and software development to expand research capabilities and create more effective scientific solutions.
-            </span>
-          </p>
-
-        </div>
-
-        <div class="glass-card">
-
-          <h3>
-            <span class="lang vi">Lĩnh vực nghiên cứu</span>
-            <span class="lang en">Research Interests</span>
-          </h3>
-
-          <ul>
-            <li>
-              <span class="lang vi">Dinh dưỡng và thức ăn chăn nuôi</span>
-              <span class="lang en">Animal Nutrition & Feed Science</span>
-            </li>
-            <li>
-              <span class="lang vi">Sinh sản động vật</span>
-              <span class="lang en">Animal Reproduction</span>
-            </li>
-            <li>
-              <span class="lang vi">Sinh lý bệnh thú y</span>
-              <span class="lang en">Veterinary Pathophysiology</span>
-            </li>
-            <li>
-              <span class="lang vi">Chăn nuôi tuần hoàn</span>
-              <span class="lang en">Circular Livestock Systems</span>
-            </li>
-            <li>
-              <span class="lang vi">Phân tích dữ liệu sinh học</span>
-              <span class="lang en">Biological Data Analysis</span>
-            </li>
-          </ul>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- EDUCATION -->
-
-  <section id="education">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        <span class="lang vi">Học vấn</span>
-        <span class="lang en">Education</span>
-      </h2>
-
-      <div class="grid">
-
-        <div class="card">
-          <h3>Master of Animal Science</h3>
-          <p>Excellent Degree</p>
-        </div>
-
-        <div class="card">
-          <h3>Doctor of Veterinary Medicine</h3>
-          <p>Excellent Degree</p>
-        </div>
-
-        <div class="card">
-          <h3>Bachelor of Information Technology</h3>
-          <p>In Progress</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- SKILLS -->
-
-  <section id="skills">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        <span class="lang vi">Kỹ năng</span>
-        <span class="lang en">Technical Skills</span>
-      </h2>
-
-      <div class="grid">
-
-        <div class="card">
-          <h3>Statistical & Data Analysis</h3>
-          <ul>
-            <li>RStudio</li>
-            <li>SPSS</li>
-            <li>JASP</li>
-            <li>SAS</li>
-            <li>Minitab</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Programming & Computing</h3>
-          <ul>
-            <li>Python</li>
-            <li>Data Analysis with R</li>
-            <li>Web Development</li>
-            <li>Scientific Visualization</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Research & Laboratory</h3>
-          <ul>
-            <li>Experimental Design</li>
-            <li>Scientific Writing</li>
-            <li>ISO 17025 Laboratory Management</li>
-          </ul>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PROJECTS -->
-
-  <section id="projects">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        <span class="lang vi">Dự án nghiên cứu</span>
-        <span class="lang en">Research Projects</span>
-      </h2>
-
-      <div class="project">
-        <h3>Impact of Salinity Intrusion on Livelihoods in Ben Tre</h3>
-        <p>
-          Environmental research project evaluating the impacts of salinity intrusion on local communities.
-        </p>
-        <span class="tag">Project Leader</span>
-        <span class="tag">Environment</span>
-      </div>
-
-      <div class="project">
-        <h3>Waste Management Awareness in Cai Rang Floating Market</h3>
-        <p>
-          Community-based project focusing on environmental awareness and sustainable waste management.
-        </p>
-        <span class="tag">Community Research</span>
-      </div>
-
-      <div class="project">
-        <h3>Utilization of Soybean Waste as Livestock Feed</h3>
-        <p>
-          Circular agriculture research converting soybean waste into sustainable livestock feed resources.
-        </p>
-        <span class="tag">Circular Agriculture</span>
-        <span class="tag">Animal Science</span>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- PUBLICATIONS -->
-
-  <section id="publications">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        <span class="lang vi">Công bố khoa học</span>
-        <span class="lang en">Publications</span>
-      </h2>
-
-      <div class="publication">
-        <a href="#" target="_blank">
-          Publication Title 1 — View Paper
-        </a>
-      </div>
-
-      <div class="publication">
-        <a href="#" target="_blank">
-          Publication Title 2 — View Paper
-        </a>
-      </div>
+<section id="about">
 
-      <div class="publication">
-        <a href="#" target="_blank">
-          Publication Title 3 — View Paper
-        </a>
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- AWARDS -->
-
-  <section id="awards">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        <span class="lang vi">Giải thưởng & Học bổng</span>
-        <span class="lang en">Awards & Scholarships</span>
-      </h2>
+<div class="container">
 
-      <div class="grid">
+<h2 class="section-title">
+<span class="lang vi">Giới thiệu</span>
+<span class="lang en">About Me</span>
+</h2>
 
-        <div class="card">
-          <h3>VINIF Scholarship</h3>
-          <p>2022–2023 & 2023–2024</p>
-        </div>
+<div class="about-grid">
 
-        <div class="card">
-          <h3>Best Presenter Award</h3>
-          <p>AVS 2023</p>
-        </div>
+<div class="about-text glass-card">
 
-        <div class="card">
-          <h3>Best Poster Award</h3>
-          <p>SAADC 2023</p>
-        </div>
+<p>
+<span class="lang vi">
+Tôi bắt đầu hành trình của mình trong lĩnh vực Khoa học Động vật với niềm đam mê dành cho nghiên cứu sinh học và bảo tồn môi trường.
+</span>
 
-      </div>
+<span class="lang en">
+I began my journey in Animal Science with a strong passion for biological research and environmental conservation.
+</span>
+</p>
 
-      <div class="stats">
+<p>
+<span class="lang vi">
+Điều đó thôi thúc tôi tiếp cận lập trình, phân tích dữ liệu và phát triển phần mềm nhằm mở rộng khả năng nghiên cứu.
+</span>
 
-        <div class="stat-box">
-          <h3>20+</h3>
-          <p>
-            <span class="lang vi">Công bố khoa học</span>
-            <span class="lang en">Publications</span>
-          </p>
-        </div>
+<span class="lang en">
+This motivated me to explore programming, data analysis, and software development to expand research capabilities.
+</span>
+</p>
 
-        <div class="stat-box">
-          <h3>10+</h3>
-          <p>
-            <span class="lang vi">Dự án nghiên cứu</span>
-            <span class="lang en">Research Projects</span>
-          </p>
-        </div>
+</div>
 
-        <div class="stat-box">
-          <h3>5+</h3>
-          <p>
-            <span class="lang vi">Giải thưởng</span>
-            <span class="lang en">Awards</span>
-          </p>
-        </div>
+<div class="glass-card">
 
-      </div>
+<h3>
+<span class="lang vi">Lĩnh vực nghiên cứu</span>
+<span class="lang en">Research Interests</span>
+</h3>
 
-    </div>
+<ul>
 
-  </section>
+<li>
+<span class="lang vi">Dinh dưỡng và thức ăn chăn nuôi</span>
+<span class="lang en">Animal Nutrition & Feed Science</span>
+</li>
 
-  <!-- FOOTER -->
+<li>
+<span class="lang vi">Sinh sản động vật</span>
+<span class="lang en">Animal Reproduction</span>
+</li>
 
-  <footer>
+<li>
+<span class="lang vi">Sinh lý bệnh thú y</span>
+<span class="lang en">Veterinary Pathophysiology</span>
+</li>
 
-    <p>
-      <span class="lang vi">
-        © 2026 Trần Long Hải | Research Portfolio
-      </span>
+<li>
+<span class="lang vi">Phân tích dữ liệu sinh học</span>
+<span class="lang en">Biological Data Analysis</span>
+</li>
 
-      <span class="lang en">
-        © 2026 Tran Long Hai | Research Portfolio
-      </span>
-    </p>
+</ul>
 
-  </footer>
+</div>
 
-  <!-- LANGUAGE SCRIPT -->
+</div>
 
-  <script>
+</div>
 
-    function setLanguage(lang){
+</section>
 
-      // Ẩn tất cả nội dung ngôn ngữ
-      document.querySelectorAll('.lang').forEach(el=>{
-        el.style.display='none';
-      });
-
-      // Hiển thị ngôn ngữ được chọn
-      document.querySelectorAll('.'+lang).forEach(el=>{
-        if(el.tagName === 'SPAN'){
-          el.style.display='inline';
-        }else{
-          el.style.display='block';
-        }
-      });
-
-      // Lưu lựa chọn ngôn ngữ
-      localStorage.setItem('language',lang);
-    }
-
-    // Khởi tạo mặc định
-    window.addEventListener('DOMContentLoaded',()=>{
-
-      const savedLang = localStorage.getItem('language') || 'en';
-
-      setLanguage(savedLang);
-
-    });
-
-  </script>
-
-</body>
-  <!-- CONTACT -->
+<!-- CONTACT -->
 
 <section id="contact">
 
-  <div class="container">
+<div class="container">
 
-    <h2 class="section-title">
+<h2 class="section-title">
 
-      <span class="lang vi">Liên hệ</span>
-      <span class="lang en">Contact</span>
+<span class="lang vi">Liên hệ</span>
+<span class="lang en">Contact</span>
 
-    </h2>
+</h2>
 
-    <div class="contact-wrapper">
+<div class="contact-wrapper">
 
-      <!-- LEFT INFO -->
+<div class="contact-info glass-card">
 
-      <div class="contact-info glass-card">
+<h3>
+<span class="lang vi">Thông tin liên hệ</span>
+<span class="lang en">Contact Information</span>
+</h3>
 
-        <h3>
-          <span class="lang vi">Thông tin liên hệ</span>
-          <span class="lang en">Contact Information</span>
-        </h3>
+<div class="contact-item">
+📧 Email:
+<a href="mailto:yourmail@gmail.com">
+yourmail@gmail.com
+</a>
+</div>
 
-        <p>
-          <span class="lang vi">
-            Tôi luôn sẵn sàng cho các cơ hội nghiên cứu, hợp tác học thuật
-            và phát triển các dự án liên ngành.
-          </span>
+<div class="contact-item">
+💻 GitHub:
+<a href="https://github.com/yourgithub" target="_blank">
+github.com/yourgithub
+</a>
+</div>
 
-          <span class="lang en">
-            I am always open to research collaborations,
-            academic opportunities, and interdisciplinary projects.
-          </span>
-        </p>
+<div class="contact-item">
+🔗 LinkedIn:
+<a href="#">
+linkedin.com/in/yourprofile
+</a>
+</div>
 
-        <div class="contact-item">
-          📧 Email:
-          <a href="mailto:yourmail@gmail.com">
-            yourmail@gmail.com
-          </a>
-        </div>
+</div>
 
-        <div class="contact-item">
-          💻 GitHub:
-          <a href="https://github.com/yourgithub" target="_blank">
-            github.com/yourgithub
-          </a>
-        </div>
+<form class="contact-form glass-card">
 
-        <div class="contact-item">
-          🔗 LinkedIn:
-          <a href="https://linkedin.com" target="_blank">
-            linkedin.com/in/yourprofile
-          </a>
-        </div>
+<div class="input-group">
 
-        <div class="contact-item">
-          📚 Google Scholar:
-          <a href="#" target="_blank">
-            View Research Profile
-          </a>
-        </div>
+<label>
+<span class="lang vi">Họ và tên</span>
+<span class="lang en">Full Name</span>
+</label>
 
-      </div>
+<input type="text">
 
-      <!-- CONTACT FORM -->
+</div>
 
-      <form class="contact-form glass-card">
+<div class="input-group">
 
-        <div class="input-group">
+<label>Email</label>
 
-          <label>
-            <span class="lang vi">Họ và tên</span>
-            <span class="lang en">Full Name</span>
-          </label>
+<input type="email">
 
-          <input type="text" placeholder="Your name">
+</div>
 
-        </div>
+<div class="input-group">
 
-        <div class="input-group">
+<label>
+<span class="lang vi">Nội dung</span>
+<span class="lang en">Message</span>
+</label>
 
-          <label>Email</label>
+<textarea rows="6"></textarea>
 
-          <input type="email" placeholder="your@email.com">
+</div>
 
-        </div>
+<button type="submit" class="contact-btn">
 
-        <div class="input-group">
+<span class="lang vi">Gửi tin nhắn</span>
+<span class="lang en">Send Message</span>
 
-          <label>
-            <span class="lang vi">Nội dung</span>
-            <span class="lang en">Message</span>
-          </label>
+</button>
 
-          <textarea rows="6" placeholder="Your message"></textarea>
+</form>
 
-        </div>
+</div>
 
-        <button type="submit" class="contact-btn">
-
-          <span class="lang vi">Gửi tin nhắn</span>
-          <span class="lang en">Send Message</span>
-
-        </button>
-
-      </form>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+
+<span class="lang vi">
+© 2026 Trần Long Hải | Research Portfolio
+</span>
+
+<span class="lang en">
+© 2026 Tran Long Hai | Research Portfolio
+</span>
+
+</p>
+
+</footer>
+
+<!-- LANGUAGE SCRIPT -->
+
+<script>
+
+function setLanguage(lang){
+
+  document.querySelectorAll('.lang').forEach(el=>{
+    el.style.display='none';
+  });
+
+  document.querySelectorAll('.'+lang).forEach(el=>{
+
+    if(el.tagName === 'SPAN'){
+      el.style.display='inline';
+    }else{
+      el.style.display='block';
+    }
+
+  });
+
+  localStorage.setItem('language',lang);
+
+}
+
+window.addEventListener('DOMContentLoaded',()=>{
+
+  const savedLang = localStorage.getItem('language') || 'en';
+
+  setLanguage(savedLang);
+
+});
+
+</script>
+
+</body>
 </html>
 ```
